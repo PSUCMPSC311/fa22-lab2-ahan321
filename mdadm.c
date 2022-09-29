@@ -14,7 +14,6 @@ struct {
 } Disk;
 
 uint32_t create_opcode(uint32_t DiskID, uint32_t BlockID, uint32_t Command, uint32_t Reserved) {
-	printf("problem starts");
 	uint32_t opcode = Reserved;
 	opcode = opcode << 6;
 	opcode = opcode | Command;
@@ -39,7 +38,6 @@ int mdadm_mount(void) {
 
 int mdadm_unmount(void) {
 	int result = jbod_operation(create_opcode(0,0,JBOD_UNMOUNT,0), NULL);
-	printf("%d\n",result);
 	if (result == 0) {
 		return 1;
 	}
