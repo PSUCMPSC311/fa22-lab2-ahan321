@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "mdadm.h": "c"
+        "mdadm.h": "c",
+        "jbod.h": "c"
     }
 }

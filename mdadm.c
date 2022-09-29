@@ -9,18 +9,11 @@
 #include "mdadm.h"
 #include "jbod.h"
 
-struct {
-	int mount;
-} Disk;
-
 uint32_t create_opcode(uint32_t DiskID, uint32_t BlockID, uint32_t Command, uint32_t Reserved) {
 	uint32_t opcode = Reserved;
-	opcode = opcode << 6;
-	opcode = opcode | Command;
-	opcode = opcode << 4;
-	opcode = opcode | DiskID;
-	opcode = opcode << 8;
-	opcode = opcode | BlockID;
+	opcode = (opcode << 6) | Command;
+	opcode = (opcode << 4) | DiskID;
+	opcode = (opcode << 8) | BlockID;
 
 	return opcode;
 }
@@ -30,10 +23,9 @@ int mdadm_mount(void) {
 	if (result == 0) {
 		return 1;
 	}
-	else if (result == -1) {
+	else {
 		return -1;
 	}
-	return 0;
  }
 
 int mdadm_unmount(void) {
@@ -41,10 +33,9 @@ int mdadm_unmount(void) {
 	if (result == 0) {
 		return 1;
 	}
-	else if (result == -1) {
+	else {
 		return -1;
 	}
-	return 0;
 
  }
 
