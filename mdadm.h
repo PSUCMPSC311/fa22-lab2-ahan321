@@ -6,6 +6,8 @@
 #include <stdint.h>
 #include "jbod.h"
 
+uint32_t create_opcode(uint32_t DiskID, uint32_t BlockID, uint32_t Command, uint32_t Reserved);
+
 /* Return 1 on success and -1 on failure */
 int mdadm_mount(void);
 
